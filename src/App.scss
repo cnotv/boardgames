@@ -1,0 +1,96 @@
+html {
+  font-family: Lato;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.ttt-squares {
+  display: grid;
+  width: 200px;
+  height: 200px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  border: 1px solid black;
+
+  &__item {
+    border: 1px solid black;
+    font: 2em "sans-serif";
+    text-align: center;
+    line-height: 2;
+    user-select: none;
+
+    &:hover:empty {
+      background: #dfdfdf;
+      cursor: pointer;
+    }
+  }
+}
+
+.dots {
+  $size: 44px;
+  $thick: 4px;
+  display: grid;
+  width: 200px;
+  height: 200px;
+
+  &__row {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    position: relative;
+  }
+
+  &__col {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  &__h {
+    position: absolute;
+    // margin: -$thick 0;
+    // padding: $thick 0;
+    width: $size;
+    height: $thick;
+  }
+
+  &__v {
+    position: absolute;
+    // margin: 0 -$thick;
+    // padding: 0 $thick;
+    width: $thick;
+    height: $size;
+  }
+
+  &__h,
+  &__v {
+    &:hover {
+      background-color: red;
+      cursor: pointer;
+    }
+  }
+
+  &__box {
+    position: absolute;
+    width: $size;
+    height: $size;
+    z-index: -1;
+
+    &--red {
+      background-color: red;
+    }
+
+    &--blue {
+      background-color: blue;
+    }
+  }
+
+  &__dot {
+    width: $thick;
+    height: $thick;
+    border-radius: 100%;
+    background-color: black;
+    z-index: 1;
+  }
+}

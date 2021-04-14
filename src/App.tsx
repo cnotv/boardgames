@@ -1,45 +1,60 @@
-import React, { useState } from 'react'
-import logo from './logo.svg'
-import './App.css'
+import React from "react";
+import "./App.scss";
 
-function App() {
-  const [count, setCount] = useState(0)
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
+import Home from "./Pages/Home";
+import Dots from "./Pages/Dots";
+import TicTacToe from "./Pages/TicTacToe";
+import Battleship from "./Pages/Battleship";
+import Pictionary from "./Pages/Pictionary";
+import JoinFive from "./Pages/JoinFive";
+import Go from "./Pages/Go";
+import Gomoku from "./Pages/Gomoku";
+
+const Routes = [
+  {
+    path: "/",
+    component: Home
+  },
+  {
+    path: "/Dots",
+    component: Dots
+  },
+  {
+    path: "/tic-tac-toe",
+    component: TicTacToe
+  },
+  {
+    path: "/battleship",
+    component: Battleship
+  },
+  {
+    path: "/pictionary",
+    component: Pictionary
+  },
+  {
+    path: "/join-five",
+    component: JoinFive
+  },
+  {
+    path: "/go",
+    component: Go
+  },
+  {
+    path: "/gomoku",
+    component: Gomoku
+  }
+];
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.tsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
-    </div>
-  )
+    <Router>
+      <Switch>
+        {Routes.map((route, i) => (
+          <Route path={route.path} exact component={route.component} key={i} />
+        ))}
+      </Switch>
+    </Router>
+  );
 }
-
-export default App
