@@ -1,0 +1,7 @@
+{
+  "**/*.ts": [
+    "yarn prettier",
+    "eslint --fix"
+  ],
+  "**/*.{css,scss}": ["yarn lint:styles:fix"]
+}
